@@ -1,0 +1,88 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-19 15:21:22.885948",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "education_level",
+  "institute_name",
+  "passing_year",
+  "technical_education",
+  "certificate_file",
+  "column_break_muwx",
+  "degree__diploma_name",
+  "board__university",
+  "marks__grade",
+  "certificate_available"
+ ],
+ "fields": [
+  {
+   "fieldname": "education_level",
+   "fieldtype": "Select",
+   "label": "Education Level",
+   "options": "Middle\nMatric\nInter\nDiploma\nBachelor"
+  },
+  {
+   "fieldname": "institute_name",
+   "fieldtype": "Data",
+   "label": "Institute Name"
+  },
+  {
+   "fieldname": "passing_year",
+   "fieldtype": "Int",
+   "label": "Passing Year"
+  },
+  {
+   "default": "0",
+   "fieldname": "technical_education",
+   "fieldtype": "Check",
+   "label": "Technical Education"
+  },
+  {
+   "fieldname": "certificate_file",
+   "fieldtype": "Attach",
+   "label": "Certificate File"
+  },
+  {
+   "fieldname": "column_break_muwx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "degree__diploma_name",
+   "fieldtype": "Data",
+   "label": "Degree / Diploma Name"
+  },
+  {
+   "fieldname": "board__university",
+   "fieldtype": "Data",
+   "label": "Board / University"
+  },
+  {
+   "fieldname": "marks__grade",
+   "fieldtype": "Data",
+   "label": "Marks / Grade"
+  },
+  {
+   "default": "0",
+   "fieldname": "certificate_available",
+   "fieldtype": "Check",
+   "label": "Certificate Available"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-19 17:02:56.705240",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Applicant Education",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

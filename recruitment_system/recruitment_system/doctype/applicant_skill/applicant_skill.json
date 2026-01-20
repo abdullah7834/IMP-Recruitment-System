@@ -1,0 +1,83 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-19 15:20:45.412652",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "skill_name",
+  "skill_level",
+  "certified",
+  "column_break_kuit",
+  "skill_type",
+  "years_of_experience",
+  "certificate_reference",
+  "remarks_section",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "skill_name",
+   "fieldtype": "Data",
+   "label": "Skill Name"
+  },
+  {
+   "fieldname": "skill_level",
+   "fieldtype": "Select",
+   "label": "Skill Level",
+   "options": "Basic\nIntermediate\nExpert"
+  },
+  {
+   "default": "0",
+   "fieldname": "certified",
+   "fieldtype": "Check",
+   "label": "Certified"
+  },
+  {
+   "fieldname": "column_break_kuit",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "skill_type",
+   "fieldtype": "Select",
+   "label": "Skill Type",
+   "options": "Technical\nSoft\nTrade"
+  },
+  {
+   "fieldname": "years_of_experience",
+   "fieldtype": "Float",
+   "label": "Years of Experience"
+  },
+  {
+   "fieldname": "certificate_reference",
+   "fieldtype": "Data",
+   "label": "Certificate Reference"
+  },
+  {
+   "fieldname": "remarks_section",
+   "fieldtype": "Section Break",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-19 15:54:53.667416",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Applicant Skill",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

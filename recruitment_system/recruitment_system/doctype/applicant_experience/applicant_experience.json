@@ -1,0 +1,177 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-19 15:21:02.541987",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "experience_section",
+  "company_name",
+  "job_title__trade",
+  "industry",
+  "column_break_thqh",
+  "country",
+  "start_date",
+  "end_date",
+  "total_duration",
+  "gulf__oversease_section",
+  "is_overseas_experience",
+  "visa_type",
+  "iqama_number",
+  "iqama_expiry",
+  "absconded_ever",
+  "blacklist_country",
+  "column_break_qnfu",
+  "gulf_country",
+  "is_return_from_gulf",
+  "exit_date_from_gulf",
+  "exit_reason",
+  "blacklisted_in_gcc",
+  "remarks_section",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "experience_section",
+   "fieldtype": "Section Break",
+   "label": "Experience"
+  },
+  {
+   "fieldname": "company_name",
+   "fieldtype": "Data",
+   "label": "Company Name"
+  },
+  {
+   "fieldname": "job_title__trade",
+   "fieldtype": "Data",
+   "label": "Job Title / Trade"
+  },
+  {
+   "fieldname": "industry",
+   "fieldtype": "Data",
+   "label": "Industry"
+  },
+  {
+   "fieldname": "column_break_thqh",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Data",
+   "label": "Country"
+  },
+  {
+   "fieldname": "start_date",
+   "fieldtype": "Date",
+   "label": "Start Date"
+  },
+  {
+   "fieldname": "end_date",
+   "fieldtype": "Date",
+   "label": "End Date"
+  },
+  {
+   "fieldname": "total_duration",
+   "fieldtype": "Data",
+   "label": "Total Duration",
+   "read_only": 1
+  },
+  {
+   "fieldname": "gulf__oversease_section",
+   "fieldtype": "Section Break",
+   "label": "Gulf / Oversease"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_overseas_experience",
+   "fieldtype": "Check",
+   "label": "Is Overseas Experience"
+  },
+  {
+   "fieldname": "visa_type",
+   "fieldtype": "Select",
+   "label": "Visa Type",
+   "options": "Work\nVisit\nStudy"
+  },
+  {
+   "fieldname": "iqama_number",
+   "fieldtype": "Data",
+   "label": "Iqama Number"
+  },
+  {
+   "fieldname": "iqama_expiry",
+   "fieldtype": "Date",
+   "label": "Iqama Expiry"
+  },
+  {
+   "default": "0",
+   "fieldname": "absconded_ever",
+   "fieldtype": "Check",
+   "label": "Absconded Ever?"
+  },
+  {
+   "fieldname": "blacklist_country",
+   "fieldtype": "Data",
+   "label": "Blacklist Country"
+  },
+  {
+   "fieldname": "column_break_qnfu",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "gulf_country",
+   "fieldtype": "Select",
+   "label": "Gulf Country",
+   "options": "KSA\nUAE\nQatar"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_return_from_gulf",
+   "fieldtype": "Check",
+   "label": "Is Return from Gulf"
+  },
+  {
+   "fieldname": "exit_date_from_gulf",
+   "fieldtype": "Date",
+   "label": "Exit Date from Gulf"
+  },
+  {
+   "fieldname": "exit_reason",
+   "fieldtype": "Select",
+   "label": "Exit Reason",
+   "options": "Contract Completed\nAbscond\nDeport"
+  },
+  {
+   "default": "0",
+   "fieldname": "blacklisted_in_gcc",
+   "fieldtype": "Check",
+   "label": "Blacklisted in GCC?"
+  },
+  {
+   "fieldname": "remarks_section",
+   "fieldtype": "Section Break",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Long Text",
+   "label": "Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-19 16:03:30.521865",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Applicant Experience",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

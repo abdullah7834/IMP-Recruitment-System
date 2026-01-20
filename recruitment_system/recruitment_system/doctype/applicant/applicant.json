@@ -1,0 +1,353 @@
+{
+ "actions": [],
+ "autoname": "field:cnic",
+ "creation": "2026-01-19 15:16:14.294548",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_identity_section",
+  "first_name",
+  "last_name",
+  "father_name",
+  "full_name",
+  "marital_status",
+  "column_break_jfda",
+  "cnic",
+  "date_of_birth",
+  "age",
+  "nationality",
+  "religion",
+  "contact_information_section",
+  "mobile_number",
+  "alternate_contact",
+  "city",
+  "current_address",
+  "column_break_apgi",
+  "whatsapp_number",
+  "email_address",
+  "province",
+  "permanent_address",
+  "passport_information_tab",
+  "passport_info_section",
+  "passport_number",
+  "passport_issue_date",
+  "passport_expiry_date",
+  "column_break_vrus",
+  "passport_place_of_issue",
+  "passport_status",
+  "applicant_documents_tab",
+  "applicant_document",
+  "applicant_education_tab",
+  "table_htod",
+  "applicant_experience_tab",
+  "applicant_experience",
+  "applicant_skill_tab",
+  "table_zuhj",
+  "medical_and_overall_applicant_status_tab",
+  "overall_applicant_status_section",
+  "applicant_status",
+  "remarks_of_applicant",
+  "medical_and_legal_summary_section",
+  "medical_status",
+  "last_medical_date",
+  "column_break_mcvo",
+  "police_clearance_status",
+  "medical_valid_till"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_identity_section",
+   "fieldtype": "Section Break",
+   "label": "BASIC IDENTITY"
+  },
+  {
+   "fieldname": "first_name",
+   "fieldtype": "Data",
+   "label": "First Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "last_name",
+   "fieldtype": "Data",
+   "label": "Last Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "father_name",
+   "fieldtype": "Data",
+   "label": "Father Name",
+   "reqd": 1
+  },
+  {
+   "fieldname": "full_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "in_preview": 1,
+   "label": "Full Name",
+   "read_only": 1
+  },
+  {
+   "fieldname": "marital_status",
+   "fieldtype": "Select",
+   "label": "Marital Status",
+   "options": "Married\nSingle"
+  },
+  {
+   "fieldname": "column_break_jfda",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "cnic",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "CNIC ",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "date_of_birth",
+   "fieldtype": "Date",
+   "label": "Date of Birth"
+  },
+  {
+   "fieldname": "age",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Age",
+   "read_only": 1
+  },
+  {
+   "fieldname": "nationality",
+   "fieldtype": "Data",
+   "label": "Nationality"
+  },
+  {
+   "fieldname": "religion",
+   "fieldtype": "Select",
+   "label": "Religion",
+   "options": "Muslim\nHindu\nChristian\nOther"
+  },
+  {
+   "fieldname": "contact_information_section",
+   "fieldtype": "Section Break",
+   "label": "CONTACT INFORMATION"
+  },
+  {
+   "fieldname": "mobile_number",
+   "fieldtype": "Data",
+   "label": "Mobile Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "alternate_contact",
+   "fieldtype": "Data",
+   "label": "Alternate Contact"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "label": "City"
+  },
+  {
+   "fieldname": "column_break_apgi",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "whatsapp_number",
+   "fieldtype": "Data",
+   "label": "WhatsApp Number",
+   "reqd": 1
+  },
+  {
+   "fieldname": "email_address",
+   "fieldtype": "Data",
+   "label": "Email Address",
+   "reqd": 1
+  },
+  {
+   "fieldname": "province",
+   "fieldtype": "Data",
+   "label": "Province"
+  },
+  {
+   "fieldname": "passport_information_tab",
+   "fieldtype": "Tab Break",
+   "label": "Passport Information"
+  },
+  {
+   "fieldname": "passport_info_section",
+   "fieldtype": "Section Break",
+   "label": "Passport Info"
+  },
+  {
+   "fieldname": "passport_number",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Passport Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "fieldname": "passport_issue_date",
+   "fieldtype": "Date",
+   "label": "Passport Issue Date"
+  },
+  {
+   "fieldname": "passport_expiry_date",
+   "fieldtype": "Date",
+   "label": "Passport Expiry Date"
+  },
+  {
+   "fieldname": "column_break_vrus",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "passport_place_of_issue",
+   "fieldtype": "Data",
+   "label": "Passport Place of Issue"
+  },
+  {
+   "fieldname": "passport_status",
+   "fieldtype": "Select",
+   "label": "Passport Status",
+   "options": "Valid\nExpired\nUnder Renewal"
+  },
+  {
+   "fieldname": "current_address",
+   "fieldtype": "Small Text",
+   "label": "Current Address"
+  },
+  {
+   "fieldname": "permanent_address",
+   "fieldtype": "Small Text",
+   "label": "Permanent Address"
+  },
+  {
+   "fieldname": "medical_and_overall_applicant_status_tab",
+   "fieldtype": "Tab Break",
+   "label": "Medical and Overall Applicant Status"
+  },
+  {
+   "fieldname": "overall_applicant_status_section",
+   "fieldtype": "Section Break",
+   "label": "Overall Applicant Status"
+  },
+  {
+   "fieldname": "applicant_status",
+   "fieldtype": "Select",
+   "label": "Applicant Status",
+   "options": "Available\nIn Process\nOn Hold"
+  },
+  {
+   "fieldname": "remarks_of_applicant",
+   "fieldtype": "Long Text",
+   "label": "Remarks Of Applicant "
+  },
+  {
+   "fieldname": "medical_and_legal_summary_section",
+   "fieldtype": "Section Break",
+   "label": "Medical and Legal Summary "
+  },
+  {
+   "fieldname": "medical_status",
+   "fieldtype": "Select",
+   "label": "Medical Status",
+   "options": "Pending\nPassed\nFailed"
+  },
+  {
+   "fieldname": "last_medical_date",
+   "fieldtype": "Date",
+   "label": "Last Medical Date"
+  },
+  {
+   "fieldname": "column_break_mcvo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "police_clearance_status",
+   "fieldtype": "Select",
+   "label": "Police Clearance Status",
+   "options": "Pending\nCompleted"
+  },
+  {
+   "fieldname": "medical_valid_till",
+   "fieldtype": "Date",
+   "label": "Medical Valid Till"
+  },
+  {
+   "fieldname": "applicant_documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Applicant Documents"
+  },
+  {
+   "fieldname": "applicant_document",
+   "fieldtype": "Table",
+   "label": "Applicant Document",
+   "options": "Applicant Document"
+  },
+  {
+   "fieldname": "applicant_education_tab",
+   "fieldtype": "Tab Break",
+   "label": "Applicant Education"
+  },
+  {
+   "fieldname": "table_htod",
+   "fieldtype": "Table",
+   "options": "Applicant Education"
+  },
+  {
+   "fieldname": "applicant_experience_tab",
+   "fieldtype": "Tab Break",
+   "label": "Applicant Experience"
+  },
+  {
+   "fieldname": "applicant_experience",
+   "fieldtype": "Table",
+   "label": "Applicant Experience",
+   "options": "Applicant Experience"
+  },
+  {
+   "fieldname": "applicant_skill_tab",
+   "fieldtype": "Tab Break",
+   "label": "Applicant Skill"
+  },
+  {
+   "fieldname": "table_zuhj",
+   "fieldtype": "Table",
+   "options": "Applicant Skill"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-20 12:17:01.529388",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Applicant",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "cnic",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "full_name",
+ "track_changes": 1,
+ "track_seen": 1
+}
