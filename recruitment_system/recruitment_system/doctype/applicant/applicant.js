@@ -3,7 +3,8 @@
 
 frappe.ui.form.on("Applicant", {
 	refresh(frm) {
-		// Additional refresh logic can be added here if needed
+		// Check document completeness on form refresh
+		check_documents_completeness(frm);
 	},
 
 	/**
@@ -46,6 +47,31 @@ frappe.ui.form.on("Applicant", {
 	 */
 	passport_number(frm) {
 		clean_passport_format(frm);
+	},
+
+	/**
+	 * Event handler: Triggered when is_missing_documents checkbox changes
+	 * Operation: Shows/hides missing_documents_name field and auto-detects missing documents
+	 */
+	is_missing_documents(frm) {
+		if (frm.doc.is_missing_documents) {
+			// If checked, check for missing documents and auto-populate if empty
+			check_documents_completeness(frm);
+		} else {
+			// If unchecked, clear missing_documents_name field
+			frm.set_value("missing_documents_name", "");
+		}
+		// Refresh field visibility
+		frm.refresh_field("missing_documents_name");
+	},
+
+	/**
+	 * Event handler: Triggered when applicant_document child table changes
+	 * Operation: Checks document completeness and auto-updates missing documents
+	 */
+	applicant_document(frm) {
+		// Check completeness when documents are added/removed/modified
+		check_documents_completeness(frm);
 	}
 });
 
@@ -142,4 +168,59 @@ function clean_passport_format(frm) {
 	if (passport_number !== cleaned_passport) {
 		frm.set_value("passport_number", cleaned_passport);
 	}
+}
+
+/**
+ * Function: check_documents_completeness
+ * Purpose: Check if all documents in applicant_document child table have files uploaded
+ * Operation: 
+ *   - Identifies documents without files
+ *   - Auto-sets is_missing_documents flag if documents are missing
+ *   - Auto-populates missing_documents_name field with missing document names
+ * Trigger: Called when applicant_document child table changes, form refreshes, or checkbox is checked
+ */
+function check_documents_completeness(frm) {
+	// Check if fields exist
+	if (!frm.fields_dict.is_missing_documents || !frm.fields_dict.missing_documents_name) {
+		return;
+	}
+	
+	let documents_without_files = [];
+	
+	// Check each row in applicant_document child table
+	if (frm.doc.applicant_document && frm.doc.applicant_document.length > 0) {
+		frm.doc.applicant_document.forEach(function(doc_row) {
+			// Check if document_type is set but file is missing
+			if (doc_row.document_type && !doc_row.file) {
+				documents_without_files.push(doc_row.document_type);
+			}
+		});
+	}
+	
+	// Auto-set is_missing_documents flag if documents are missing
+	if (documents_without_files.length > 0) {
+		// Set the checkbox if not already set
+		if (!frm.doc.is_missing_documents) {
+			frm.set_value("is_missing_documents", 1);
+		}
+		
+		// Auto-populate missing_documents_name field if it's empty
+		let current_missing = (frm.doc.missing_documents_name || "").trim();
+		if (!current_missing) {
+			// Create a comma-separated list of missing documents
+			let missing_list = documents_without_files.join(", ");
+			frm.set_value("missing_documents_name", missing_list);
+		}
+	} else {
+		// All documents have files, uncheck the flag if it was auto-checked
+		// But don't uncheck if user manually checked it (preserve user intent)
+		// Only auto-uncheck if we auto-checked it (when missing_documents_name was auto-populated)
+		if (frm.doc.is_missing_documents && frm.doc.missing_documents_name) {
+			// Check if the value matches what we would auto-populate (user might have edited it)
+			// For now, we'll leave it as is to preserve user input
+		}
+	}
+	
+	// Refresh field visibility
+	frm.refresh_field("missing_documents_name");
 }

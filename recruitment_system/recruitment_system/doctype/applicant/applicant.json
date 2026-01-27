@@ -14,6 +14,7 @@
   "column_break_jfda",
   "cnic",
   "date_of_birth",
+  "place_of_birth",
   "age",
   "nationality",
   "religion",
@@ -27,6 +28,10 @@
   "email_address",
   "province",
   "permanent_address",
+  "documents_check_section",
+  "is_missing_documents",
+  "column_break_qtuc",
+  "missing_documents_name",
   "passport_information_tab",
   "passport_info_section",
   "passport_number",
@@ -117,6 +122,7 @@
    "read_only": 1
   },
   {
+   "default": "Pakistani",
    "fieldname": "nationality",
    "fieldtype": "Data",
    "label": "Nationality"
@@ -315,12 +321,39 @@
    "fieldname": "table_zuhj",
    "fieldtype": "Table",
    "options": "Applicant Skill"
+  },
+  {
+   "fieldname": "place_of_birth",
+   "fieldtype": "Data",
+   "label": "Place of Birth"
+  },
+  {
+   "fieldname": "documents_check_section",
+   "fieldtype": "Section Break",
+   "label": "Documents Check"
+  },
+  {
+   "default": "0",
+   "fieldname": "is_missing_documents",
+   "fieldtype": "Check",
+   "label": "Is Missing Documents"
+  },
+  {
+   "fieldname": "column_break_qtuc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "depends_on": "eval:doc.is_missing_documents == 1",
+   "fieldname": "missing_documents_name",
+   "fieldtype": "Small Text",
+   "label": "Missing Documents Name",
+   "description": "Enter the names of missing documents, separated by commas (e.g., CV, Passport, CNIC)"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-20 12:17:01.529388",
+ "modified": "2026-01-26 13:18:05.663440",
  "modified_by": "Administrator",
  "module": "Recruitment System",
  "name": "Applicant",

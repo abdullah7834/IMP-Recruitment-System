@@ -43,7 +43,10 @@ app_license = "mit"
 # page_js = {"page" : "public/js/file.js"}
 
 # include js in doctype views
-# doctype_js = {"doctype" : "public/js/doctype.js"}
+doctype_js = {
+	"Job Opening": "public/js/job_opening_demand.js",
+	"Job Applicant": "public/js/job_applicant.js"
+}
 # doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
@@ -129,13 +132,15 @@ app_license = "mit"
 # ---------------
 # Override standard doctype classes
 
-# override_doctype_class = {
-# 	"ToDo": "custom_app.overrides.CustomToDo"
-# }
+override_doctype_class = {
+	"Job Opening": "recruitment_system.recruitment_system.doctype.job_opening_demand.job_opening.JobOpening"
+}
 
 # Document Events
 # ---------------
 # Hook on document methods and events
+# Note: Demand Drive folder management hooks are implemented directly in Demand class
+# (after_insert, on_update, on_trash methods are automatically called by Frappe)
 
 # doc_events = {
 # 	"*": {

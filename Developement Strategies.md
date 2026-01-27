@@ -115,7 +115,7 @@ Represent **Demand Letters** formally in the system.
 - Demand Letter (Drive link)
 - POA (Drive link)
 
-### Automation
+### Automation  
 - Demand → Job Opening creation
 
 ---
@@ -170,7 +170,7 @@ Track **Applicant ↔ Job** lifecycle.
 - Internal Rejected
 - Batched
 - Client Selected
-- Client Rejected
+- Client Rejected   
 - Visa Processing
 - Deployed
 

@@ -1,0 +1,85 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-22 15:56:10.375016",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "job_title",
+  "quantity",
+  "experience_required",
+  "column_break_ssju",
+  "job_category",
+  "basic_sallary",
+  "education_required",
+  "section_break_ziun",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "job_title",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Job Title"
+  },
+  {
+   "fieldname": "quantity",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Quantity"
+  },
+  {
+   "fieldname": "experience_required",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Experience Required"
+  },
+  {
+   "fieldname": "column_break_ssju",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "job_category",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Job Category"
+  },
+  {
+   "fieldname": "basic_sallary",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Basic Sallary"
+  },
+  {
+   "fieldname": "education_required",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Education Required"
+  },
+  {
+   "fieldname": "section_break_ziun",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "istable": 1,
+ "links": [],
+ "modified": "2026-01-22 16:47:59.526656",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Demand Positons",
+ "owner": "Administrator",
+ "permissions": [],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

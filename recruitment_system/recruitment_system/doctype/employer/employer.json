@@ -1,0 +1,283 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:company_reg_no",
+ "creation": "2026-01-21 12:59:45.205308",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "basic_information_section",
+  "employer_name",
+  "status",
+  "city",
+  "address",
+  "column_break_bagk",
+  "employer_code",
+  "country",
+  "website",
+  "company_reg_no",
+  "force_delete",
+  "primary_contact_section",
+  "primary_contact_name",
+  "primary_contact_phone",
+  "column_break_sepx",
+  "primary_contact_designation",
+  "primary_contact_email",
+  "recruitment_configuration_section",
+  "preferred_language",
+  "recruitment_active",
+  "column_break_afwa",
+  "default_currency",
+  "internal_notes",
+  "legal_summary_section",
+  "poa_valid_till",
+  "mou_available",
+  "have_poa",
+  "column_break_qebg",
+  "remarks",
+  "tab_2_tab",
+  "employer_documents_section",
+  "employer_documents",
+  "employer_contact_tab",
+  "employer_contact",
+  "employer_official_email_tab",
+  "employer_official_email"
+ ],
+ "fields": [
+  {
+   "fieldname": "basic_information_section",
+   "fieldtype": "Section Break",
+   "label": "Basic Information"
+  },
+  {
+   "fieldname": "employer_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employer Name",
+   "unique": 1
+  },
+  {
+   "fieldname": "status",
+   "fieldtype": "Select",
+   "label": "Status",
+   "options": "Active\nOn Hold\nInactive"
+  },
+  {
+   "fieldname": "city",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "City"
+  },
+  {
+   "fieldname": "address",
+   "fieldtype": "Small Text",
+   "label": "Address"
+  },
+  {
+   "fieldname": "column_break_bagk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employer_code",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Employer Code"
+  },
+  {
+   "fieldname": "country",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "website",
+   "fieldtype": "Data",
+   "label": "Website"
+  },
+  {
+   "fieldname": "primary_contact_section",
+   "fieldtype": "Section Break",
+   "label": "Primary Contact"
+  },
+  {
+   "fieldname": "primary_contact_name",
+   "fieldtype": "Data",
+   "label": "Primary Contact Name"
+  },
+  {
+   "fieldname": "primary_contact_phone",
+   "fieldtype": "Data",
+   "label": "Primary Contact Phone"
+  },
+  {
+   "fieldname": "column_break_sepx",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "primary_contact_designation",
+   "fieldtype": "Data",
+   "label": "Primary Contact Designation"
+  },
+  {
+   "fieldname": "primary_contact_email",
+   "fieldtype": "Data",
+   "label": "Primary Contact Email"
+  },
+  {
+   "fieldname": "recruitment_configuration_section",
+   "fieldtype": "Section Break",
+   "label": "Recruitment Configuration"
+  },
+  {
+   "fieldname": "preferred_language",
+   "fieldtype": "Select",
+   "label": "Preferred Language",
+   "options": "English\nArabic\nBoth"
+  },
+  {
+   "default": "0",
+   "fieldname": "recruitment_active",
+   "fieldtype": "Check",
+   "label": "Recruitment Active"
+  },
+  {
+   "fieldname": "column_break_afwa",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "default_currency",
+   "fieldtype": "Link",
+   "label": "Default Currency",
+   "options": "Currency"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "default": "0",
+   "fieldname": "force_delete",
+   "fieldtype": "Check",
+   "label": "Allow Deletion (Delete Drive Folders)",
+   "description": "Check this box to allow deletion of this Employer and its Drive folders. This action cannot be undone."
+  },
+  {
+   "fieldname": "legal_summary_section",
+   "fieldtype": "Section Break",
+   "label": "Legal Summary"
+  },
+  {
+   "fieldname": "poa_valid_till",
+   "fieldtype": "Date",
+   "label": "POA Valid Till"
+  },
+  {
+   "fieldname": "column_break_qebg",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "mou_available",
+   "fieldtype": "Check",
+   "label": "MOU Available"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  },
+  {
+   "fieldname": "tab_2_tab",
+   "fieldtype": "Tab Break",
+   "label": "Employer Documents"
+  },
+  {
+   "fieldname": "employer_documents_section",
+   "fieldtype": "Section Break",
+   "label": "Employer Documents"
+  },
+  {
+   "fieldname": "employer_documents",
+   "fieldtype": "Table",
+   "label": "Employer Documents",
+   "options": "Employer Document"
+  },
+  {
+   "fieldname": "employer_contact_tab",
+   "fieldtype": "Tab Break",
+   "label": "Employer Contact"
+  },
+  {
+   "fieldname": "employer_contact",
+   "fieldtype": "Table",
+   "label": "Employer Contact",
+   "options": "Employer Contact"
+  },
+  {
+   "fieldname": "employer_official_email_tab",
+   "fieldtype": "Tab Break",
+   "label": "Employer Official Email"
+  },
+  {
+   "fieldname": "employer_official_email",
+   "fieldtype": "Table",
+   "label": "Employer Official Email",
+   "options": "Employer Official Email"
+  },
+  {
+   "fieldname": "company_reg_no",
+   "fieldtype": "Data",
+   "label": "Company Registration Number",
+   "reqd": 1,
+   "unique": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "have_poa",
+   "fieldtype": "Check",
+   "label": "Have POA"
+  },
+  {
+   "fieldname": "drive_root_folder",
+   "fieldtype": "Data",
+   "hidden": 1,
+   "label": "Drive Root Folder",
+   "read_only": 1
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-22 10:25:55.165980",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Employer",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "search_fields": "company_reg_no",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "employer_name",
+ "track_changes": 1,
+ "track_seen": 1
+}

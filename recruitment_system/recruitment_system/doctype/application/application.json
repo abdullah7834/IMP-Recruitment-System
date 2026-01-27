@@ -1,0 +1,303 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-26 12:04:50.866807",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "applicant",
+  "job_applicant",
+  "demand_position",
+  "column_break_ardr",
+  "job_opening",
+  "demand",
+  "application_pipeline_section",
+  "application_stage",
+  "internal_screening_results_section",
+  "internal_hr_result",
+  "internal_remarks",
+  "column_break_nsnw",
+  "technical_result",
+  "company_results_section",
+  "company_result",
+  "company__remarks",
+  "column_break_dura",
+  "company_interview_date",
+  "visa_and_government_processing_tab",
+  "visa_status",
+  "visa_issue_date",
+  "protector_status",
+  "column_break_abcv",
+  "visa_category",
+  "visa_expiry_date",
+  "protector_date",
+  "deployment_details_tab",
+  "deployment_date",
+  "flight_date",
+  "column_break_tvjk",
+  "deployment_country",
+  "final_outcome",
+  "tab_important_dates_tab",
+  "applied_on",
+  "client_selection_date",
+  "last_stage_updated_on",
+  "column_break_khtt",
+  "internal_selection_date",
+  "visa_processing_start",
+  "system_metadata_tab",
+  "user",
+  "column_break_otoo",
+  "application_source"
+ ],
+ "fields": [
+  {
+   "fieldname": "applicant",
+   "fieldtype": "Link",
+   "label": "Applicant",
+   "options": "Applicant"
+  },
+  {
+   "fieldname": "job_applicant",
+   "fieldtype": "Link",
+   "label": "Job Applicant",
+   "options": "Job Applicant"
+  },
+  {
+   "fieldname": "demand_position",
+   "fieldtype": "Select",
+   "label": "Demand Position"
+  },
+  {
+   "fieldname": "column_break_ardr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "job_opening",
+   "fieldtype": "Link",
+   "label": "Job Opening",
+   "options": "Job Opening"
+  },
+  {
+   "fieldname": "demand",
+   "fieldtype": "Link",
+   "label": "Demand",
+   "options": "Demand"
+  },
+  {
+   "fieldname": "application_pipeline_section",
+   "fieldtype": "Section Break",
+   "label": "Application Pipeline"
+  },
+  {
+   "fieldname": "application_stage",
+   "fieldtype": "Select",
+   "label": "Application Stage",
+   "options": "Applied\nScreening\nDocuments Pending\nInternally Selected\nInternal Rejected\nBatched\nClient Selected\nClient Rejected\nVisa Processing\nDeployed"
+  },
+  {
+   "fieldname": "internal_screening_results_section",
+   "fieldtype": "Section Break",
+   "label": "Internal Screening Results"
+  },
+  {
+   "fieldname": "internal_hr_result",
+   "fieldtype": "Select",
+   "label": "Internal HR Result",
+   "options": "Pass\nFail\nHold"
+  },
+  {
+   "fieldname": "internal_remarks",
+   "fieldtype": "Small Text",
+   "label": "Internal Remarks"
+  },
+  {
+   "fieldname": "column_break_nsnw",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "technical_result",
+   "fieldtype": "Select",
+   "label": "Technical Result",
+   "options": "Pass\nFail\nHold"
+  },
+  {
+   "fieldname": "visa_and_government_processing_tab",
+   "fieldtype": "Tab Break",
+   "label": "Visa and Government Processing"
+  },
+  {
+   "fieldname": "visa_status",
+   "fieldtype": "Select",
+   "label": "Visa Status",
+   "options": "Not Started\nIn Process\nIssued\nRejected"
+  },
+  {
+   "fieldname": "visa_issue_date",
+   "fieldtype": "Date",
+   "label": "Visa Issue Date"
+  },
+  {
+   "fieldname": "protector_status",
+   "fieldtype": "Select",
+   "label": "Protector Status",
+   "options": "Pending\nCompleted\nRejected"
+  },
+  {
+   "fieldname": "column_break_abcv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visa_category",
+   "fieldtype": "Data",
+   "label": "Visa Category"
+  },
+  {
+   "fieldname": "visa_expiry_date",
+   "fieldtype": "Date",
+   "label": "Visa Expiry Date"
+  },
+  {
+   "fieldname": "protector_date",
+   "fieldtype": "Date",
+   "label": "Protector Date"
+  },
+  {
+   "fieldname": "deployment_details_tab",
+   "fieldtype": "Tab Break",
+   "label": "Deployment Details"
+  },
+  {
+   "fieldname": "deployment_date",
+   "fieldtype": "Date",
+   "label": "Deployment Date"
+  },
+  {
+   "fieldname": "flight_date",
+   "fieldtype": "Date",
+   "label": "Flight Date"
+  },
+  {
+   "fieldname": "column_break_tvjk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "deployment_country",
+   "fieldtype": "Link",
+   "label": "Deployment Country",
+   "options": "Country"
+  },
+  {
+   "fieldname": "final_outcome",
+   "fieldtype": "Select",
+   "label": "Final Outcome",
+   "options": "Deployed\nRejected\nWithdrawn"
+  },
+  {
+   "fieldname": "tab_important_dates_tab",
+   "fieldtype": "Tab Break",
+   "label": "Tab Important Dates"
+  },
+  {
+   "fieldname": "applied_on",
+   "fieldtype": "Date",
+   "label": "Applied On"
+  },
+  {
+   "fieldname": "client_selection_date",
+   "fieldtype": "Date",
+   "label": "Client Selection Date"
+  },
+  {
+   "fieldname": "last_stage_updated_on",
+   "fieldtype": "Datetime",
+   "label": "Last Stage Updated On"
+  },
+  {
+   "fieldname": "column_break_khtt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "internal_selection_date",
+   "fieldtype": "Date",
+   "label": "Internal Selection Date"
+  },
+  {
+   "fieldname": "visa_processing_start",
+   "fieldtype": "Date",
+   "label": "Visa Processing Start"
+  },
+  {
+   "fieldname": "system_metadata_tab",
+   "fieldtype": "Tab Break",
+   "label": "System Metadata"
+  },
+  {
+   "fieldname": "user",
+   "fieldtype": "Link",
+   "label": "User",
+   "options": "User"
+  },
+  {
+   "fieldname": "column_break_otoo",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "application_source",
+   "fieldtype": "Select",
+   "label": "Application Source",
+   "options": "Job Applicant\nManual Entry\nWhatsApp\nWebsite"
+  },
+  {
+   "fieldname": "company_results_section",
+   "fieldtype": "Section Break",
+   "label": "Company Results"
+  },
+  {
+   "fieldname": "company_result",
+   "fieldtype": "Select",
+   "label": "Company Result",
+   "options": "Selected\nRejected\nOn Hold"
+  },
+  {
+   "fieldname": "company__remarks",
+   "fieldtype": "Small Text",
+   "label": "Company  Remarks"
+  },
+  {
+   "fieldname": "column_break_dura",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "company_interview_date",
+   "fieldtype": "Date",
+   "label": "Company Interview Date"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-26 12:53:09.961299",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Application",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

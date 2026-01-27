@@ -1,0 +1,470 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "field:demand_reference_no",
+ "creation": "2026-01-22 15:23:43.093269",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "general_information_section",
+  "demand_title",
+  "demand_reference_no",
+  "source_email",
+  "country_of_deployment",
+  "column_break_kkfl",
+  "employer",
+  "demand_received_date",
+  "internal_coordinator",
+  "demand_status",
+  "section_break_mjhp",
+  "visa_category",
+  "visa_quantity_approved",
+  "visa_validity_months",
+  "column_break_mbro",
+  "visa_type",
+  "embassy",
+  "remarks_visa",
+  "position_summary_tab",
+  "total_positions",
+  "nationality_allowed",
+  "contract_duration_years",
+  "working_hours__day",
+  "column_break_bptk",
+  "total_quantity",
+  "age_min",
+  "age_max",
+  "tab_3_tab",
+  "salary_and_benefits_section",
+  "basic_sallary",
+  "overtime",
+  "food",
+  "medical",
+  "column_break_lttl",
+  "currency",
+  "accomodation",
+  "transport",
+  "air_ticket",
+  "section_break_opbu",
+  "other_benefits",
+  "legal_documents_tab",
+  "documents_section",
+  "demand_letter",
+  "poa_issue_date",
+  "attestation_required",
+  "attested_copy",
+  "column_break_mppt",
+  "power_of_attorney_poa",
+  "poa_expiry_date",
+  "attestation_status",
+  "governmentbureau_process_tab",
+  "bureau_submission_date",
+  "bureau_reference_no",
+  "column_break_cehe",
+  "bureau_approval_date",
+  "approved_quantity",
+  "section_break_rjsb",
+  "bureau_remarks",
+  "intrnal_control_flags_tab",
+  "recruitment_allowed",
+  "column_break_uchc",
+  "job_creation_and_adverstisement",
+  "internal_notes_section",
+  "internal_notes",
+  "column_break_ehfr",
+  "employer_notes",
+  "demand_positions_tab",
+  "demand_positions_section",
+  "positions"
+ ],
+ "fields": [
+  {
+   "fieldname": "demand_title",
+   "fieldtype": "Data",
+   "label": "Demand Title",
+   "unique": 1
+  },
+  {
+   "fieldname": "demand_reference_no",
+   "fieldtype": "Data",
+   "label": "Demand Reference No",
+   "unique": 1
+  },
+  {
+   "fieldname": "source_email",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Source Email"
+  },
+  {
+   "fieldname": "country_of_deployment",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Country of Deployment",
+   "options": "Country"
+  },
+  {
+   "fieldname": "column_break_kkfl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employer",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Employer",
+   "options": "Employer"
+  },
+  {
+   "fieldname": "demand_received_date",
+   "fieldtype": "Date",
+   "in_list_view": 1,
+   "label": "Demand Received Date"
+  },
+  {
+   "fieldname": "internal_coordinator",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Internal Coordinator",
+   "options": "User"
+  },
+  {
+   "fieldname": "demand_status",
+   "fieldtype": "Select",
+   "label": "Demand Status",
+   "options": "Draft\nReceived\nSent to Bureau\nApproved\nRejected\nClosed"
+  },
+  {
+   "fieldname": "general_information_section",
+   "fieldtype": "Section Break",
+   "label": "General Information"
+  },
+  {
+   "fieldname": "section_break_mjhp",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "visa_category",
+   "fieldtype": "Select",
+   "label": "Visa Category",
+   "options": "Work\nEmployment\nOther"
+  },
+  {
+   "fieldname": "visa_quantity_approved",
+   "fieldtype": "Int",
+   "label": "Visa Quantity Approved"
+  },
+  {
+   "fieldname": "visa_validity_months",
+   "fieldtype": "Int",
+   "label": "Visa Validity Months"
+  },
+  {
+   "fieldname": "column_break_mbro",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "visa_type",
+   "fieldtype": "Select",
+   "label": "Visa Type",
+   "options": "Skilled\nSemi-Skilled\nLabor"
+  },
+  {
+   "fieldname": "embassy",
+   "fieldtype": "Data",
+   "label": "Embassy"
+  },
+  {
+   "fieldname": "remarks_visa",
+   "fieldtype": "Small Text",
+   "label": "Remarks (Visa)"
+  },
+  {
+   "fieldname": "position_summary_tab",
+   "fieldtype": "Tab Break",
+   "label": "Position Summary"
+  },
+  {
+   "fieldname": "total_positions",
+   "fieldtype": "Int",
+   "label": "Total Positions"
+  },
+  {
+   "fieldname": "nationality_allowed",
+   "fieldtype": "Data",
+   "label": "Nationality Allowed"
+  },
+  {
+   "fieldname": "contract_duration_years",
+   "fieldtype": "Int",
+   "label": "Contract Duration (Years)"
+  },
+  {
+   "fieldname": "working_hours__day",
+   "fieldtype": "Data",
+   "label": "Working Hours / Day"
+  },
+  {
+   "fieldname": "column_break_bptk",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "total_quantity",
+   "fieldtype": "Int",
+   "label": "Total Quantity"
+  },
+  {
+   "fieldname": "age_min",
+   "fieldtype": "Int",
+   "label": "Age Min"
+  },
+  {
+   "fieldname": "age_max",
+   "fieldtype": "Int",
+   "label": "Age Max"
+  },
+  {
+   "fieldname": "tab_3_tab",
+   "fieldtype": "Tab Break",
+   "label": "Sallary and Benefits"
+  },
+  {
+   "fieldname": "salary_and_benefits_section",
+   "fieldtype": "Section Break",
+   "label": "Salary and Benefits"
+  },
+  {
+   "fieldname": "basic_sallary",
+   "fieldtype": "Data",
+   "label": "Basic Sallary"
+  },
+  {
+   "default": "0",
+   "fieldname": "overtime",
+   "fieldtype": "Check",
+   "label": "Overtime"
+  },
+  {
+   "default": "0",
+   "fieldname": "food",
+   "fieldtype": "Check",
+   "label": "Food"
+  },
+  {
+   "default": "0",
+   "fieldname": "medical",
+   "fieldtype": "Check",
+   "label": "Medical"
+  },
+  {
+   "fieldname": "column_break_lttl",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "currency",
+   "fieldtype": "Link",
+   "label": "Currency",
+   "options": "Currency"
+  },
+  {
+   "default": "0",
+   "fieldname": "accomodation",
+   "fieldtype": "Check",
+   "label": "Accomodation"
+  },
+  {
+   "default": "0",
+   "fieldname": "transport",
+   "fieldtype": "Check",
+   "label": "Transport"
+  },
+  {
+   "default": "0",
+   "fieldname": "air_ticket",
+   "fieldtype": "Check",
+   "label": "Air Ticket"
+  },
+  {
+   "fieldname": "section_break_opbu",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "other_benefits",
+   "fieldtype": "Small Text",
+   "label": "Other Benefits"
+  },
+  {
+   "fieldname": "legal_documents_tab",
+   "fieldtype": "Tab Break",
+   "label": "Legal Documents"
+  },
+  {
+   "fieldname": "documents_section",
+   "fieldtype": "Section Break",
+   "label": "Documents"
+  },
+  {
+   "fieldname": "demand_letter",
+   "fieldtype": "Attach",
+   "label": "Demand Letter"
+  },
+  {
+   "fieldname": "poa_issue_date",
+   "fieldtype": "Date",
+   "label": "POA Issue Date"
+  },
+  {
+   "default": "0",
+   "fieldname": "attestation_required",
+   "fieldtype": "Check",
+   "label": "Attestation Required"
+  },
+  {
+   "fieldname": "attested_copy",
+   "fieldtype": "Attach",
+   "label": "Attested Copy"
+  },
+  {
+   "fieldname": "column_break_mppt",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "power_of_attorney_poa",
+   "fieldtype": "Attach",
+   "label": "Power of Attorney (POA)"
+  },
+  {
+   "fieldname": "poa_expiry_date",
+   "fieldtype": "Date",
+   "label": "POA Expiry Date"
+  },
+  {
+   "fieldname": "attestation_status",
+   "fieldtype": "Select",
+   "label": "Attestation Status",
+   "options": "Pending\nApproved"
+  },
+  {
+   "fieldname": "governmentbureau_process_tab",
+   "fieldtype": "Tab Break",
+   "label": "Government/Bureau Process"
+  },
+  {
+   "fieldname": "bureau_submission_date",
+   "fieldtype": "Date",
+   "label": "Bureau Submission Date"
+  },
+  {
+   "fieldname": "bureau_reference_no",
+   "fieldtype": "Data",
+   "label": "Bureau Reference No"
+  },
+  {
+   "fieldname": "column_break_cehe",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "bureau_approval_date",
+   "fieldtype": "Date",
+   "label": "Bureau Approval Date"
+  },
+  {
+   "fieldname": "approved_quantity",
+   "fieldtype": "Data",
+   "label": "Approved Quantity"
+  },
+  {
+   "fieldname": "section_break_rjsb",
+   "fieldtype": "Section Break"
+  },
+  {
+   "fieldname": "bureau_remarks",
+   "fieldtype": "Small Text",
+   "label": "Bureau Remarks"
+  },
+  {
+   "fieldname": "intrnal_control_flags_tab",
+   "fieldtype": "Tab Break",
+   "label": "Intrnal Control FLags"
+  },
+  {
+   "default": "0",
+   "fieldname": "recruitment_allowed",
+   "fieldtype": "Check",
+   "label": "Recruitment Allowed"
+  },
+  {
+   "fieldname": "column_break_uchc",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "fieldname": "job_creation_and_adverstisement",
+   "fieldtype": "Check",
+   "label": "Job Creation and Adverstisement"
+  },
+  {
+   "fieldname": "internal_notes_section",
+   "fieldtype": "Section Break",
+   "label": "INTERNAL NOTES"
+  },
+  {
+   "fieldname": "internal_notes",
+   "fieldtype": "Small Text",
+   "label": "Internal Notes"
+  },
+  {
+   "fieldname": "column_break_ehfr",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "employer_notes",
+   "fieldtype": "Small Text",
+   "label": "Employer Notes"
+  },
+  {
+   "fieldname": "demand_positions_tab",
+   "fieldtype": "Tab Break",
+   "label": "Demand Positions"
+  },
+  {
+   "fieldname": "demand_positions_section",
+   "fieldtype": "Section Break",
+   "label": "Demand Positions"
+  },
+  {
+   "fieldname": "positions",
+   "fieldtype": "Table",
+   "label": "Positions",
+   "options": "Demand Positons"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-24 12:56:00.220514",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Demand",
+ "naming_rule": "By fieldname",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "demand_title"
+}

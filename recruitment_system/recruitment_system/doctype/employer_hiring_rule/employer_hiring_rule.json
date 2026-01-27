@@ -1,0 +1,95 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "creation": "2026-01-21 13:32:57.121489",
+ "doctype": "DocType",
+ "editable_grid": 1,
+ "engine": "InnoDB",
+ "field_order": [
+  "job_category",
+  "age_minimum",
+  "age_maximum",
+  "english_level_required",
+  "column_break_ntat",
+  "minimum_passport_validity_months",
+  "minimum_experience_year",
+  "gulf_return_allowed",
+  "remarks"
+ ],
+ "fields": [
+  {
+   "fieldname": "job_category",
+   "fieldtype": "Data",
+   "label": "Job Category"
+  },
+  {
+   "fieldname": "age_minimum",
+   "fieldtype": "Int",
+   "label": "Age Minimum"
+  },
+  {
+   "fieldname": "age_maximum",
+   "fieldtype": "Int",
+   "label": "Age Maximum"
+  },
+  {
+   "fieldname": "english_level_required",
+   "fieldtype": "Select",
+   "label": "English Level Required",
+   "options": "Basic\nGood\nVery Good"
+  },
+  {
+   "fieldname": "column_break_ntat",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "6",
+   "fieldname": "minimum_passport_validity_months",
+   "fieldtype": "Int",
+   "label": "Minimum Passport Validity Months "
+  },
+  {
+   "fieldname": "minimum_experience_year",
+   "fieldtype": "Float",
+   "label": "Minimum Experience Year"
+  },
+  {
+   "fieldname": "gulf_return_allowed",
+   "fieldtype": "Select",
+   "label": "Gulf Return Allowed",
+   "options": "Allowed\nNot Allowed\nConditional"
+  },
+  {
+   "fieldname": "remarks",
+   "fieldtype": "Small Text",
+   "label": "Remarks"
+  }
+ ],
+ "grid_page_length": 50,
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-21 13:43:12.946047",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Employer Hiring Rule",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "rows_threshold_for_grid_search": 20,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

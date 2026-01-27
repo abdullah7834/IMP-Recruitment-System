@@ -20,16 +20,19 @@
   {
    "fieldname": "document_type",
    "fieldtype": "Select",
+   "in_list_view": 1,
    "label": "Document Type",
-   "options": "CV\nPassport\nCNIC\nLicense\nCertificate\nMedical"
+   "options": "CV\nPassport\nCNIC\nLicense\nCertificate\nMedical\nEducation\nExperience\nPolice\nVisa\nWork Permit\nBank Statement\nSalary Certificate\nReference Letter\nContract\nOther"
   },
   {
+   "depends_on": "eval:in_list([\"Passport\", \"CNIC\", \"License\", \"Visa\", \"Work Permit\"], doc.document_type)",
    "fieldname": "issue_date",
    "fieldtype": "Date",
    "label": "Issue Date"
   },
   {
    "default": "0",
+   "depends_on": "eval:in_list([\"Passport\", \"CNIC\", \"License\", \"Visa\", \"Work Permit\", \"Certificate\"], doc.document_type)",
    "fieldname": "valid",
    "fieldtype": "Check",
    "label": "Valid"
@@ -39,11 +42,13 @@
    "fieldtype": "Column Break"
   },
   {
+   "depends_on": "eval:in_list([\"Passport\", \"CNIC\", \"License\", \"Visa\", \"Work Permit\"], doc.document_type)",
    "fieldname": "document_number",
    "fieldtype": "Data",
    "label": "Document Number"
   },
   {
+   "depends_on": "eval:in_list([\"Passport\", \"CNIC\", \"License\", \"Visa\", \"Work Permit\"], doc.document_type)",
    "fieldname": "expiry_date",
    "fieldtype": "Date",
    "label": "Expiry Date"
@@ -73,7 +78,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-01-20 10:38:51.846415",
+ "modified": "2026-01-20 16:52:47.787606",
  "modified_by": "Administrator",
  "module": "Recruitment System",
  "name": "Applicant Document",
