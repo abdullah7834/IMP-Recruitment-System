@@ -1,0 +1,78 @@
+{
+ "actions": [],
+ "autoname": "autoincrement",
+ "creation": "2026-01-30 00:00:00",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "pipeline",
+  "stage_name",
+  "sequence",
+  "column_break_ps",
+  "is_terminal"
+ ],
+ "fields": [
+  {
+   "fieldname": "pipeline",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Pipeline",
+   "options": "Pipeline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "stage_name",
+   "fieldtype": "Data",
+   "in_list_view": 1,
+   "label": "Stage Name",
+   "reqd": 1
+  },
+  {
+   "default": "0",
+   "fieldname": "sequence",
+   "fieldtype": "Int",
+   "in_list_view": 1,
+   "label": "Sequence",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_ps",
+   "fieldtype": "Column Break"
+  },
+  {
+   "default": "0",
+   "description": "Terminal stages (e.g. Rejected, Closed) have no next stage",
+   "fieldname": "is_terminal",
+   "fieldtype": "Check",
+   "label": "Is Terminal"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-31 10:40:43.472195",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Pipeline Stage",
+ "naming_rule": "Autoincrement",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "row_format": "Dynamic",
+ "show_title_field_in_link": 1,
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": [],
+ "title_field": "stage_name"
+}

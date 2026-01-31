@@ -158,7 +158,7 @@ Track **Applicant ↔ Job** lifecycle.
 - Current Stage
 - Internal HR result
 - Technical result
-- Client result
+- Company result
 - Visa status
 - Final outcome
 
@@ -169,8 +169,8 @@ Track **Applicant ↔ Job** lifecycle.
 - Internally Selected
 - Internal Rejected
 - Batched
-- Client Selected
-- Client Rejected   
+- Company Selected
+- Company Rejected   
 - Visa Processing
 - Deployed
 
@@ -179,14 +179,14 @@ Track **Applicant ↔ Job** lifecycle.
 ## MODULE 6: INTERVIEWS
 
 ### Purpose
-Handle internal and client interviews.
+Handle internal and Company interviews.
 
 ### Use Existing DocType
 - Interview (Frappe HR)
 
 ### Custom Fields
-- Interview Type (HR / Technical / Client)
-- Interview Level (Internal / Client)
+- Interview Type (HR / Technical / Company) 
+- Interview Level (Internal / Company)
 - Result (Pass / Fail / Hold)
 
 ---
@@ -194,7 +194,7 @@ Handle internal and client interviews.
 ## MODULE 7: BATCH MANAGEMENT (OVERSEAS SPECIFIC)
 
 ### Purpose
-Group **internally selected candidates** before client interview.
+Group **internally selected candidates** before Company interview.
 
 ### Custom DocTypes
 - Batch
@@ -202,7 +202,7 @@ Group **internally selected candidates** before client interview.
 
 ### Batch Rules
 - Batch is created **after internal selection**
-- Batch is sent to client for review/interview
+- Batch is sent to Company for review/interview
 
 ### Drive Structure
 /Companies/{Company}/Batches/{Batch Name}/

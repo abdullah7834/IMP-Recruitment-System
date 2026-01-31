@@ -26,7 +26,7 @@ frappe.listview_settings["Employer"] = {
 				function() {
 					// Yes - proceed with deletion
 					frappe.call({
-						method: "frappe.client.delete",
+						method: "frappe.Company.delete",
 						args: {
 							doctype: "Employer",
 							name: selected_docs[0].name,

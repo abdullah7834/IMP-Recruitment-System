@@ -1,0 +1,391 @@
+{
+ "actions": [],
+ "allow_rename": 1,
+ "autoname": "naming_series:VP-.####",
+ "creation": "2026-01-30 00:00:00.000000",
+ "doctype": "DocType",
+ "engine": "InnoDB",
+ "field_order": [
+  "naming_series",
+  "header_section",
+  "job_applicant",
+  "applicant",
+  "column_break_vp1",
+  "pipeline",
+  "current_stage",
+  "started_on",
+  "tab_stage_details",
+  "section_medical",
+  "medical_date",
+  "medical_status",
+  "medical_remarks",
+  "column_break_med",
+  "section_takamul",
+  "takamul_date",
+  "takamul_status",
+  "takamul_remarks",
+  "column_break_tak",
+  "section_embassy_doc",
+  "embassy_documentation_date",
+  "embassy_documentation_status",
+  "embassy_documentation_remarks",
+  "column_break_embd",
+  "section_navttc",
+  "navttc_date",
+  "navttc_status",
+  "navttc_remarks",
+  "column_break_nav",
+  "section_e_number",
+  "e_number_date",
+  "e_number_status",
+  "e_number_remarks",
+  "column_break_enum",
+  "section_embassy_visa",
+  "embassy_visa_date",
+  "embassy_visa_status",
+  "embassy_visa_remarks",
+  "column_break_embv",
+  "section_protector",
+  "protector_date",
+  "protector_status",
+  "protector_remarks",
+  "column_break_pro",
+  "section_ticket",
+  "ticket_date",
+  "ticket_status",
+  "ticket_remarks",
+  "column_break_tic",
+  "section_deployment",
+  "deployment_date",
+  "deployment_status",
+  "deployment_remarks",
+  "column_break_dep",
+  "section_closed",
+  "closed_date",
+  "closed_remarks"
+ ],
+ "fields": [
+  {
+   "default": "VP-.####",
+   "fieldname": "naming_series",
+   "fieldtype": "Select",
+   "label": "Series",
+   "options": "VP-.####",
+   "reqd": 1
+  },
+  {
+   "fieldname": "header_section",
+   "fieldtype": "Section Break",
+   "label": "Visa Process"
+  },
+  {
+   "fieldname": "job_applicant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Job Applicant",
+   "options": "Job Applicant",
+   "reqd": 1
+  },
+  {
+   "fieldname": "applicant",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Applicant",
+   "options": "Applicant",
+   "reqd": 1
+  },
+  {
+   "fieldname": "column_break_vp1",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "pipeline",
+   "fieldtype": "Link",
+   "label": "Pipeline",
+   "options": "Pipeline",
+   "reqd": 1
+  },
+  {
+   "fieldname": "current_stage",
+   "fieldtype": "Link",
+   "in_list_view": 1,
+   "label": "Current Stage",
+   "options": "Pipeline Stage"
+  },
+  {
+   "fieldname": "started_on",
+   "fieldtype": "Date",
+   "label": "Started On"
+  },
+  {
+   "fieldname": "tab_stage_details",
+   "fieldtype": "Tab Break",
+   "label": "Stage Details"
+  },
+  {
+   "fieldname": "section_medical",
+   "fieldtype": "Section Break",
+   "label": "Medical"
+  },
+  {
+   "fieldname": "medical_date",
+   "fieldtype": "Date",
+   "label": "Medical Date"
+  },
+  {
+   "fieldname": "medical_status",
+   "fieldtype": "Select",
+   "label": "Medical Status",
+   "options": "Pending\nIn Progress\nDone\nFailed\nNot Required"
+  },
+  {
+   "fieldname": "medical_remarks",
+   "fieldtype": "Small Text",
+   "label": "Medical Remarks"
+  },
+  {
+   "fieldname": "column_break_med",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_takamul",
+   "fieldtype": "Section Break",
+   "label": "Takamul"
+  },
+  {
+   "fieldname": "takamul_date",
+   "fieldtype": "Date",
+   "label": "Takamul Date"
+  },
+  {
+   "fieldname": "takamul_status",
+   "fieldtype": "Select",
+   "label": "Takamul Status",
+   "options": "Pending\nIn Progress\nDone\nFailed\nNot Required"
+  },
+  {
+   "fieldname": "takamul_remarks",
+   "fieldtype": "Small Text",
+   "label": "Takamul Remarks"
+  },
+  {
+   "fieldname": "column_break_tak",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_embassy_doc",
+   "fieldtype": "Section Break",
+   "label": "Embassy Documentation"
+  },
+  {
+   "fieldname": "embassy_documentation_date",
+   "fieldtype": "Date",
+   "label": "Embassy Documentation Date"
+  },
+  {
+   "fieldname": "embassy_documentation_status",
+   "fieldtype": "Select",
+   "label": "Embassy Documentation Status",
+   "options": "Pending\nIn Progress\nDone\nRejected\nNot Required"
+  },
+  {
+   "fieldname": "embassy_documentation_remarks",
+   "fieldtype": "Small Text",
+   "label": "Embassy Documentation Remarks"
+  },
+  {
+   "fieldname": "column_break_embd",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_navttc",
+   "fieldtype": "Section Break",
+   "label": "NAVTTC"
+  },
+  {
+   "fieldname": "navttc_date",
+   "fieldtype": "Date",
+   "label": "NAVTTC Date"
+  },
+  {
+   "fieldname": "navttc_status",
+   "fieldtype": "Select",
+   "label": "NAVTTC Status",
+   "options": "Pending\nIn Progress\nDone\nRejected\nNot Required"
+  },
+  {
+   "fieldname": "navttc_remarks",
+   "fieldtype": "Small Text",
+   "label": "NAVTTC Remarks"
+  },
+  {
+   "fieldname": "column_break_nav",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_e_number",
+   "fieldtype": "Section Break",
+   "label": "E-Number"
+  },
+  {
+   "fieldname": "e_number_date",
+   "fieldtype": "Date",
+   "label": "E-Number Date"
+  },
+  {
+   "fieldname": "e_number_status",
+   "fieldtype": "Select",
+   "label": "E-Number Status",
+   "options": "Pending\nAllotted\nRejected\nNot Required"
+  },
+  {
+   "fieldname": "e_number_remarks",
+   "fieldtype": "Small Text",
+   "label": "E-Number Remarks"
+  },
+  {
+   "fieldname": "column_break_enum",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_embassy_visa",
+   "fieldtype": "Section Break",
+   "label": "Embassy Visa"
+  },
+  {
+   "fieldname": "embassy_visa_date",
+   "fieldtype": "Date",
+   "label": "Embassy Visa Date"
+  },
+  {
+   "fieldname": "embassy_visa_status",
+   "fieldtype": "Select",
+   "label": "Embassy Visa Status",
+   "options": "Pending\nIn Progress\nIssued\nRejected\nNot Required"
+  },
+  {
+   "fieldname": "embassy_visa_remarks",
+   "fieldtype": "Small Text",
+   "label": "Embassy Visa Remarks"
+  },
+  {
+   "fieldname": "column_break_embv",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_protector",
+   "fieldtype": "Section Break",
+   "label": "Protector"
+  },
+  {
+   "fieldname": "protector_date",
+   "fieldtype": "Date",
+   "label": "Protector Date"
+  },
+  {
+   "fieldname": "protector_status",
+   "fieldtype": "Select",
+   "label": "Protector Status",
+   "options": "Pending\nDone\nRejected\nNot Required"
+  },
+  {
+   "fieldname": "protector_remarks",
+   "fieldtype": "Small Text",
+   "label": "Protector Remarks"
+  },
+  {
+   "fieldname": "column_break_pro",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_ticket",
+   "fieldtype": "Section Break",
+   "label": "Ticket"
+  },
+  {
+   "fieldname": "ticket_date",
+   "fieldtype": "Date",
+   "label": "Ticket Date"
+  },
+  {
+   "fieldname": "ticket_status",
+   "fieldtype": "Select",
+   "label": "Ticket Status",
+   "options": "Pending\nBooked\nReceived\nNot Required"
+  },
+  {
+   "fieldname": "ticket_remarks",
+   "fieldtype": "Small Text",
+   "label": "Ticket Remarks"
+  },
+  {
+   "fieldname": "column_break_tic",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_deployment",
+   "fieldtype": "Section Break",
+   "label": "Deployment"
+  },
+  {
+   "fieldname": "deployment_date",
+   "fieldtype": "Date",
+   "label": "Deployment Date"
+  },
+  {
+   "fieldname": "deployment_status",
+   "fieldtype": "Select",
+   "label": "Deployment Status",
+   "options": "Pending\nDeployed\nNot Required"
+  },
+  {
+   "fieldname": "deployment_remarks",
+   "fieldtype": "Small Text",
+   "label": "Deployment Remarks"
+  },
+  {
+   "fieldname": "column_break_dep",
+   "fieldtype": "Column Break"
+  },
+  {
+   "fieldname": "section_closed",
+   "fieldtype": "Section Break",
+   "label": "Closed"
+  },
+  {
+   "fieldname": "closed_date",
+   "fieldtype": "Date",
+   "label": "Closed Date"
+  },
+  {
+   "fieldname": "closed_remarks",
+   "fieldtype": "Small Text",
+   "label": "Closed Remarks"
+  }
+ ],
+ "index_web_pages_for_search": 1,
+ "links": [],
+ "modified": "2026-01-30 00:00:00.000000",
+ "modified_by": "Administrator",
+ "module": "Recruitment System",
+ "name": "Visa Process",
+ "naming_rule": "By \"Naming Series\" field",
+ "owner": "Administrator",
+ "permissions": [
+  {
+   "create": 1,
+   "delete": 1,
+   "email": 1,
+   "export": 1,
+   "print": 1,
+   "read": 1,
+   "report": 1,
+   "role": "System Manager",
+   "share": 1,
+   "write": 1
+  }
+ ],
+ "sort_field": "modified",
+ "sort_order": "DESC",
+ "states": []
+}

@@ -106,7 +106,7 @@ class Applicant(Document):
 		)
 		
 		if existing:
-			frappe.throw(
+			frappe.throw( 
 				_("Applicant with CNIC {0} already exists.").format(self.cnic),
 				frappe.DuplicateEntryError
 			)
@@ -192,7 +192,7 @@ class Applicant(Document):
 		# Auto-set is_missing_documents flag if documents are missing
 		if documents_without_files:
 			# Set the checkbox if not already set
-			if hasattr(self, 'is_missing_documents') and not self.is_missing_documents:
+			if hasattr(self, 'is_missing_documents') and not self.is_missing_documents:  
 				self.is_missing_documents = 1
 			
 			# Auto-populate missing_documents_name field if checkbox is checked and field is empty

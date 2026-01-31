@@ -20,14 +20,11 @@
   "visa_type",
   "iqama_number",
   "iqama_expiry",
-  "absconded_ever",
-  "blacklist_country",
   "column_break_qnfu",
-  "gulf_country",
   "is_return_from_gulf",
+  "gulf_country",
   "exit_date_from_gulf",
   "exit_reason",
-  "blacklisted_in_gcc",
   "remarks_section",
   "remarks"
  ],
@@ -58,8 +55,9 @@
   },
   {
    "fieldname": "country",
-   "fieldtype": "Data",
-   "label": "Country"
+   "fieldtype": "Link",
+   "label": "Country",
+   "options": "Country"
   },
   {
    "fieldname": "start_date",
@@ -105,25 +103,14 @@
    "label": "Iqama Expiry"
   },
   {
-   "default": "0",
-   "fieldname": "absconded_ever",
-   "fieldtype": "Check",
-   "label": "Absconded Ever?"
-  },
-  {
-   "fieldname": "blacklist_country",
-   "fieldtype": "Data",
-   "label": "Blacklist Country"
-  },
-  {
    "fieldname": "column_break_qnfu",
    "fieldtype": "Column Break"
   },
   {
    "fieldname": "gulf_country",
-   "fieldtype": "Select",
+   "fieldtype": "Link",
    "label": "Gulf Country",
-   "options": "KSA\nUAE\nQatar"
+   "options": "Country"
   },
   {
    "default": "0",
@@ -143,12 +130,6 @@
    "options": "Contract Completed\nAbscond\nDeport"
   },
   {
-   "default": "0",
-   "fieldname": "blacklisted_in_gcc",
-   "fieldtype": "Check",
-   "label": "Blacklisted in GCC?"
-  },
-  {
    "fieldname": "remarks_section",
    "fieldtype": "Section Break",
    "label": "Remarks"
@@ -163,7 +144,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-01-19 16:03:30.521865",
+ "modified": "2026-01-28 14:06:01.985120",
  "modified_by": "Administrator",
  "module": "Recruitment System",
  "name": "Applicant Experience",

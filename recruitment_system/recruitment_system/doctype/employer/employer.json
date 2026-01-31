@@ -158,10 +158,10 @@
   },
   {
    "default": "0",
+   "description": "Check this box to allow deletion of this Employer and its Drive folders. This action cannot be undone.",
    "fieldname": "force_delete",
    "fieldtype": "Check",
-   "label": "Allow Deletion (Delete Drive Folders)",
-   "description": "Check this box to allow deletion of this Employer and its Drive folders. This action cannot be undone."
+   "label": "Allow Deletion (Delete Drive Folders)"
   },
   {
    "fieldname": "legal_summary_section",
@@ -238,19 +238,12 @@
    "fieldname": "have_poa",
    "fieldtype": "Check",
    "label": "Have POA"
-  },
-  {
-   "fieldname": "drive_root_folder",
-   "fieldtype": "Data",
-   "hidden": 1,
-   "label": "Drive Root Folder",
-   "read_only": 1
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-22 10:25:55.165980",
+ "modified": "2026-01-28 15:20:03.607671",
  "modified_by": "Administrator",
  "module": "Recruitment System",
  "name": "Employer",

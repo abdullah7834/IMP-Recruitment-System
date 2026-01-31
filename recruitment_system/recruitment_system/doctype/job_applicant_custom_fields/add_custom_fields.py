@@ -181,8 +181,8 @@ def add_custom_fields_to_job_applicant():
 			"source",
 			"column_break_3",
 			"column_break_13",
-			"column_break_18",
-			"job_opening_title"  # In case it was added manually
+			"column_break_18"
+			# Note: job_opening_title is a custom field, not a standard field
 		]
 	
 	custom_fields = {
@@ -241,48 +241,20 @@ def add_custom_fields_to_job_applicant():
 			},
 			
 			# ============================================
-			# SECTION: Screening Results
-			# ============================================
-			{
-				"fieldname": "screening_results_section",
-				"fieldtype": "Section Break",
-				"label": "Screening Results",
-				"insert_after": "demand_position"
-			},
-			{
-				"fieldname": "internal_hr_result",
-				"fieldtype": "Select",
-				"label": "Internal HR Result",
-				"options": "Pass\nFail\nHold",
-				"insert_after": "screening_results_section"
-			},
-			{
-				"fieldname": "column_break_screening_1",
-				"fieldtype": "Column Break",
-				"insert_after": "internal_hr_result"
-			},
-			{
-				"fieldname": "technical_result",
-				"fieldtype": "Select",
-				"label": "Technical Result",
-				"options": "Pass\nFail\nHold",
-				"insert_after": "column_break_screening_1"
-			},
-			
-			# ============================================
 			# SECTION: Pipeline Bridge (Control)
 			# ============================================
 			{
 				"fieldname": "pipeline_bridge_section",
 				"fieldtype": "Section Break",
 				"label": "Pipeline Bridge (Control)",
-				"insert_after": "technical_result"
+				"insert_after": "job_opening_title"
 			},
 			{
 				"fieldname": "ready_for_pipeline",
 				"fieldtype": "Check",
 				"label": "Ready for Application Pipeline",
 				"default": 0,
+				"description": "When checked, Pipeline is set to Interviews and Current Stage to Screening (first stage). Save after checking to persist.",
 				"insert_after": "pipeline_bridge_section"
 			},
 			{
@@ -297,6 +269,76 @@ def add_custom_fields_to_job_applicant():
 				"read_only": 1,
 				"default": 0,
 				"insert_after": "column_break_pipeline_1"
+			},
+			# ============================================
+			# SECTION: Pipeline & Stages
+			# ============================================
+			{
+				"fieldname": "pipeline_section",
+				"fieldtype": "Section Break",
+				"label": "Pipeline & Stages",
+				"insert_after": "converted_to_application"
+			},
+			{
+				"fieldname": "pipeline",
+				"fieldtype": "Link",
+				"label": "Pipeline",
+				"options": "Pipeline",
+				"insert_after": "pipeline_section"
+			},
+			{
+				"fieldname": "current_stage",
+				"fieldtype": "Link",
+				"label": "Current Stage",
+				"options": "Pipeline Stage",
+				"insert_after": "pipeline"
+			},
+			{
+				"fieldname": "current_stage_name",
+				"fieldtype": "Data",
+				"label": "Current Stage Name",
+				"read_only": 1,
+				"hidden": 1,
+				"fetch_from": "current_stage.stage_name",
+				"insert_after": "current_stage"
+			},
+			{
+				"fieldname": "column_break_pl",
+				"fieldtype": "Column Break",
+				"insert_after": "current_stage_name"
+			},
+			# Company Selection Date: show when Company Selected / Offer Letter / Visa Process (historical); hide only when Interviews + Screening
+			{
+				"fieldname": "Company_selection_date",
+				"fieldtype": "Date",
+				"label": "Company Selection Date",
+				"insert_after": "column_break_pl",
+				"depends_on": "eval:(doc.current_stage_name == 'Company Selected' || doc.pipeline == 'Offer Letter' || doc.visa_process) && !(doc.pipeline == 'Interviews' && doc.current_stage_name == 'Screening')"
+			},
+			# Offer Letter Received Date: show when Offer Letter pipeline (editable) or Visa Process linked (historical); hide when Interviews + Screening
+			{
+				"fieldname": "offer_letter_received_date",
+				"fieldtype": "Date",
+				"label": "Offer Letter Received Date",
+				"insert_after": "Company_selection_date",
+				"depends_on": "eval:(doc.pipeline == 'Offer Letter' && ['Offer Letter Received', 'Offer Letter Accepted'].includes(doc.current_stage_name) || doc.visa_process) && !(doc.pipeline == 'Interviews' && doc.current_stage_name == 'Screening')"
+			},
+			# Offer Letter Accepted Date: show when Offer Letter + stage Accepted (editable) or Visa Process linked (historical); hide when Interviews + Screening
+			{
+				"fieldname": "offer_letter_accepted_date",
+				"fieldtype": "Date",
+				"label": "Offer Letter Accepted Date",
+				"insert_after": "offer_letter_received_date",
+				"depends_on": "eval:(doc.pipeline == 'Offer Letter' && doc.current_stage_name == 'Offer Letter Accepted' || doc.visa_process) && !(doc.pipeline == 'Interviews' && doc.current_stage_name == 'Screening')"
+			},
+			{
+				"fieldname": "visa_process",
+				"fieldtype": "Link",
+				"label": "Visa Process",
+				"options": "Visa Process",
+				"read_only": 1,
+				"insert_after": "offer_letter_accepted_date",
+				"depends_on": "eval:doc.pipeline == 'Offer Letter' || doc.visa_process"
 			}
 		]
 	}
@@ -363,6 +405,79 @@ def add_custom_fields_to_job_applicant():
 		error_msg = f"Error adding custom fields to Job Applicant: {str(e)}"
 		frappe.log_error(error_msg, "Add Custom Fields Error")
 		frappe.msgprint(error_msg, indicator="red")
+		return {"success": False, "error": str(e)}
+
+
+# Depends-on expressions: show dates when Offer Letter or Visa Process (historical); hide only when Interviews + Screening
+_DATE_FIELDS_DEPENDS_ON = {
+	"Company_selection_date": "eval:(doc.current_stage_name == 'Company Selected' || doc.pipeline == 'Offer Letter' || doc.visa_process) && !(doc.pipeline == 'Interviews' && doc.current_stage_name == 'Screening')",
+	"offer_letter_received_date": "eval:(doc.pipeline == 'Offer Letter' && ['Offer Letter Received', 'Offer Letter Accepted'].includes(doc.current_stage_name) || doc.visa_process) && !(doc.pipeline == 'Interviews' && doc.current_stage_name == 'Screening')",
+	"offer_letter_accepted_date": "eval:(doc.pipeline == 'Offer Letter' && doc.current_stage_name == 'Offer Letter Accepted' || doc.visa_process) && !(doc.pipeline == 'Interviews' && doc.current_stage_name == 'Screening')",
+}
+
+
+@frappe.whitelist()
+def update_date_fields_depends_on():
+	"""
+	Update the depends_on of Company Selection Date, Offer Letter Received Date, and Offer Letter Accepted Date
+	so they are hidden only when Pipeline is Interviews and Current Stage is Screening, and so they remain
+	visible when pipeline is Visa Process (historical; read-only via client script).
+	Run once after changing the logic in add_custom_fields.py so existing Custom Field records are updated.
+	"""
+	try:
+		updated = []
+		for fieldname, depends_on in _DATE_FIELDS_DEPENDS_ON.items():
+			name = frappe.db.exists("Custom Field", {"dt": "Job Applicant", "fieldname": fieldname})
+			if name:
+				doc = frappe.get_doc("Custom Field", name)
+				doc.depends_on = depends_on
+				doc.save(ignore_permissions=True)
+				updated.append(fieldname)
+		frappe.db.commit()
+		frappe.clear_cache(doctype="Job Applicant")
+		if updated:
+			frappe.msgprint(
+				f"Updated depends_on for: {', '.join(updated)}. Clear cache and reload the form.",
+				indicator="green",
+			)
+		return {"success": True, "updated": updated}
+	except Exception as e:
+		frappe.log_error(f"Update date fields depends_on: {str(e)}", "Update Date Fields Depends On")
+		return {"success": False, "error": str(e)}
+
+
+# Fieldnames removed from Job Applicant (Screening Results section)
+_SCREENING_RESULTS_FIELDS = (
+	"screening_results_section",
+	"internal_hr_result",
+	"column_break_screening_1",
+	"technical_result",
+)
+
+
+@frappe.whitelist()
+def remove_screening_results_fields():
+	"""
+	Remove the Screening Results section and its fields (Internal HR Result, Technical Result)
+	from the Job Applicant form. Run once if those custom fields already exist in the database.
+	"""
+	try:
+		removed = []
+		for fieldname in _SCREENING_RESULTS_FIELDS:
+			name = frappe.db.exists("Custom Field", {"dt": "Job Applicant", "fieldname": fieldname})
+			if name:
+				frappe.delete_doc("Custom Field", name, force=1)
+				removed.append(fieldname)
+		frappe.db.commit()
+		frappe.clear_cache(doctype="Job Applicant")
+		if removed:
+			frappe.msgprint(
+				f"Removed Screening Results fields: {', '.join(removed)}. Clear cache and reload the form.",
+				indicator="blue",
+			)
+		return {"success": True, "removed": removed}
+	except Exception as e:
+		frappe.log_error(f"Remove screening results fields: {str(e)}", "Remove Screening Results Fields")
 		return {"success": False, "error": str(e)}
 
 

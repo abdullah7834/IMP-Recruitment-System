@@ -6,6 +6,51 @@
  * Extends standard Job Applicant functionality for overseas recruitment
  */
 
+/**
+ * Sync current_stage_name from Pipeline Stage so depends_on for date fields evaluates correctly.
+ * Refreshes Company Selection Date, Offer Letter Received Date, Offer Letter Accepted Date.
+ */
+function sync_current_stage_name_and_refresh_date_fields(frm) {
+	if (!frm.doc.current_stage) {
+		frm.doc.current_stage_name = null;
+		frm.refresh_field("current_stage_name");
+		refresh_date_fields(frm);
+		return;
+	}
+	frappe.call({
+		method: "recruitment_system.recruitment_system.doctype.job_applicant.job_applicant.get_stage_name",
+		args: { stage_link_value: frm.doc.current_stage },
+		callback: function(r) {
+			frm.doc.current_stage_name = r.message || null;
+			frm.refresh_field("current_stage_name");
+			refresh_date_fields(frm);
+		}
+	});
+}
+
+function refresh_date_fields(frm) {
+	var date_fields = ["Company_selection_date", "offer_letter_received_date", "offer_letter_accepted_date"];
+	date_fields.forEach(function(fieldname) {
+		if (frm.fields_dict[fieldname]) {
+			frm.refresh_field(fieldname);
+		}
+	});
+}
+
+/**
+ * When pipeline is Visa Process (or visa_process is linked), make Offer Letter / selection date
+ * fields read-only so they remain visible as historical data and are not accidentally edited.
+ */
+function set_offer_letter_dates_readonly_when_visa_process(frm) {
+	var date_fields = ["Company_selection_date", "offer_letter_received_date", "offer_letter_accepted_date"];
+	var read_only = !!(frm.doc.pipeline === "Visa Process" && frm.doc.visa_process);
+	date_fields.forEach(function(fieldname) {
+		if (frm.fields_dict[fieldname]) {
+			frm.set_df_property(fieldname, "read_only", read_only ? 1 : 0);
+		}
+	});
+}
+
 // Function to fetch and populate applicant details
 function fetch_and_populate_applicant_details(frm) {
 	if (!frm.doc.applicant) {
@@ -100,6 +145,55 @@ frappe.ui.form.on("Job Applicant", {
 				frm.trigger("linked_demand");
 			}
 		}
+		
+		// Handle checkbox locking and form read-only state
+		setup_checkbox_controls(frm);
+
+		// Track pipeline so we only clear Current Stage when pipeline actually changes (not on load/refresh)
+		frm._last_pipeline = frm.doc.pipeline;
+		// Filter Current Stage by selected Pipeline (Link field expects filters as object: { fieldname: value } or { fieldname: [operator, value] })
+		if (frm.fields_dict.pipeline && frm.fields_dict.current_stage) {
+			if (frm.doc.pipeline && typeof frm.doc.pipeline === "string") {
+				frm.set_df_property("current_stage", "filters", { pipeline: frm.doc.pipeline });
+			} else {
+				frm.set_df_property("current_stage", "filters", {});
+			}
+		}
+		// Sync current_stage_name so date fields (Offer Letter / Visa Process) visibility is correct
+		if (frm.doc.current_stage || frm.doc.pipeline === "Offer Letter" || frm.doc.pipeline === "Visa Process") {
+			sync_current_stage_name_and_refresh_date_fields(frm);
+		}
+		// When in Visa Process pipeline: show Offer Letter dates as historical (read-only) so they stay visible
+		set_offer_letter_dates_readonly_when_visa_process(frm);
+		
+		// Add "Schedule Company Interview" when candidate is Internally Selected (second round from Job Applicant)
+		if (frm.doc.pipeline === "Interviews" && frm.doc.current_stage && !frm.is_new()) {
+			frappe.call({
+				method: "recruitment_system.recruitment_system.doctype.job_applicant.job_applicant.get_job_applicant_current_stage_name",
+				args: { name: frm.doc.name },
+				callback: function(r) {
+					if (r.message === "Internally Selected") {
+						frm.add_custom_button(__("Schedule Company Interview"), function() {
+							schedule_Company_interview(frm);
+						}, __("Actions"));
+					}
+				}
+			});
+		}
+
+		// Add "Start Visa Process" button when stage is Offer Letter Accepted and no Visa Process yet
+		if (frm.doc.pipeline === "Offer Letter" && frm.doc.current_stage && !frm.doc.visa_process && !frm.is_new()) {
+			frm.add_custom_button(__("Start Visa Process"), function() {
+				start_visa_process(frm);
+			}, __("Actions"));
+		}
+		
+		// Open Visa Process if linked
+		if (frm.doc.visa_process) {
+			frm.add_custom_button(__("Open Visa Process"), function() {
+				frappe.set_route("Form", "Visa Process", frm.doc.visa_process);
+			}, __("Actions"));
+		}
 	},
 	/**
 	 * Event handler: Triggered when applicant (Link to Applicant) field changes
@@ -115,6 +209,47 @@ frappe.ui.form.on("Job Applicant", {
 		
 		// Use the shared function
 		fetch_and_populate_applicant_details(frm);
+	},
+	/**
+	 * When Pipeline changes: filter Current Stage to this pipeline; set Current Stage to
+	 * first stage of the new pipeline (from DB) so values are always from database.
+	 */
+	pipeline: function(frm) {
+		if (!frm.fields_dict.current_stage) return;
+		if (frm.doc.pipeline && typeof frm.doc.pipeline === "string") {
+			frm.set_df_property("current_stage", "filters", { pipeline: frm.doc.pipeline });
+		} else {
+			frm.set_df_property("current_stage", "filters", {});
+		}
+		var pipeline_changed = frm._last_pipeline !== undefined && frm.doc.pipeline !== frm._last_pipeline;
+		frm._last_pipeline = frm.doc.pipeline;
+		if (pipeline_changed && frm.doc.pipeline) {
+			// Set Current Stage to first stage of the selected pipeline (from DB)
+			frappe.call({
+				method: "recruitment_system.recruitment_system.doctype.job_applicant.job_applicant.get_first_stage_for_pipeline",
+				args: { pipeline_name: frm.doc.pipeline },
+				callback: function(r) {
+					if (r.message) {
+						frm.set_value("current_stage", r.message);
+					} else {
+						frm.set_value("current_stage", "");
+					}
+					frm.refresh_field("current_stage");
+					sync_current_stage_name_and_refresh_date_fields(frm);
+				}
+			});
+			return;
+		}
+		if (pipeline_changed && !frm.doc.pipeline) {
+			frm.set_value("current_stage", "");
+		}
+		frm.refresh_field("current_stage");
+	},
+	/**
+	 * When Current Stage changes: sync current_stage_name so date fields (Offer Letter Received/Accepted) show/hide correctly.
+	 */
+	current_stage: function(frm) {
+		sync_current_stage_name_and_refresh_date_fields(frm);
 	},
 	/**
 	 * Event handler: Triggered when linked_demand (Link to Demand) field changes
@@ -257,5 +392,196 @@ frappe.ui.form.on("Job Applicant", {
 				});
 			}
 		});
+	},
+	/**
+	 * Event handler: Triggered when job_title (Job Opening Link) field changes directly
+	 * Operation: Fetches and populates job_opening_title from the selected Job Opening
+	 */
+	job_title: function(frm) {
+		if (!frm.doc.job_title) {
+			// Clear job_opening_title if job_title is cleared
+			if (frm.fields_dict.job_opening_title) {
+				frm.set_value("job_opening_title", "");
+			}
+			return;
+		}
+		
+		// Fetch Job Opening details to get the job_title field
+		frappe.call({
+			method: "frappe.Company.get",
+			args: {
+				doctype: "Job Opening",
+				name: frm.doc.job_title
+			},
+			callback: function(r) {
+				if (r.message && r.message.job_title && frm.fields_dict.job_opening_title) {
+					// Populate Job Opening Title from the Job Opening's job_title field
+					frm.set_value("job_opening_title", r.message.job_title);
+				}
+			},
+			error: function(r) {
+				console.error("[Job Applicant] Error fetching Job Opening details:", r);
+			}
+		});
+	},
+	/**
+	 * When "Ready for Application Pipeline" is checked: auto-set Pipeline = Interviews
+	 * and Current Stage = Screening (first stage). Server validates and persists on save.
+	 */
+	ready_for_pipeline: function(frm) {
+		if (frm.doc.ready_for_pipeline) {
+			frappe.call({
+				method: "recruitment_system.recruitment_system.doctype.job_applicant.job_applicant.get_initial_pipeline_and_stage",
+				callback: function(r) {
+					var msg = r.message;
+					if (msg && msg.pipeline && msg.current_stage) {
+						// Set pipeline first (triggers pipeline handler; it clears current_stage)
+						frm.set_value("pipeline", msg.pipeline);
+						frm.set_value("current_stage", msg.current_stage);
+						// Apply filters so Current Stage dropdown shows only stages for this pipeline
+						if (frm.fields_dict.current_stage) {
+							frm.set_df_property("current_stage", "filters", { pipeline: msg.pipeline });
+						}
+						frm.refresh_field("pipeline");
+						frm.refresh_field("current_stage");
+						frappe.show_alert({
+							indicator: "green",
+							message: __("Pipeline set to {0}, stage set to first stage.", [msg.pipeline])
+						}, 3);
+					} else {
+						frappe.msgprint({
+							title: __("Setup Required"),
+							message: __("No pipeline for Job Applicant or no stages found. Run 'Setup Pipelines and Stages' from the Recruitment System module."),
+							indicator: "orange"
+						});
+					}
+				}
+			});
+			// Passport expiry warning when applicable
+			if (frm.doc.applicant && !frm.is_new()) {
+				frappe.call({
+					method: "recruitment_system.recruitment_system.doctype.job_applicant.job_applicant.get_passport_expiry_warning",
+					args: { name: frm.doc.name, applicant: frm.doc.applicant },
+					callback: function(r) {
+						if (r.message && r.message.has_warning) {
+							frappe.msgprint({
+								title: __("Passport Expiry Warning"),
+								message: r.message.message,
+								indicator: "orange"
+							});
+						}
+					},
+					error: function() {}
+				});
+			}
+		} else {
+			frm.set_value("pipeline", "");
+			frm.set_value("current_stage", "");
+			if (frm.fields_dict.current_stage) {
+				frm.set_df_property("current_stage", "filters", {});
+			}
+			frm.refresh_field("pipeline");
+			frm.refresh_field("current_stage");
+		}
+	},
+	/**
+	 * Event handler: Triggered when converted_to_application checkbox changes
+	 * Operation: Lock form and prevent further changes
+	 */
+	converted_to_application: function(frm) {
+		if (frm.doc.converted_to_application) {
+			frm.set_read_only();
+			frm.disable_save();
+			frappe.show_alert({
+				indicator: "green",
+				message: __("Job Applicant has been converted to Application. Form is now read-only.")
+			}, 5);
+		}
 	}
 });
+
+/**
+ * Setup checkbox controls and locking logic
+ */
+function setup_checkbox_controls(frm) {
+	// Lock converted_to_application checkbox (system-controlled)
+	if (frm.fields_dict.converted_to_application) {
+		if (frm.doc.converted_to_application) {
+			// Already converted - make read-only
+			frm.set_df_property("converted_to_application", "read_only", 1);
+		} else {
+			// Not converted yet - keep read-only (system-controlled)
+			frm.set_df_property("converted_to_application", "read_only", 1);
+		}
+	}
+	
+	// ready_for_pipeline is user-controlled, but validation happens server-side
+	// No need to lock it here - server validation will prevent invalid states
+}
+
+/**
+ * Open new Interview form for Company round (second round) from Job Applicant.
+ * Pre-fills all fields from Job Applicant (same as first interview): job_applicant, job_opening, demand,
+ * interview_round, interview_level. Interview form reads sessionStorage and populates fields.
+ */
+function schedule_Company_interview(frm) {
+	frappe.call({
+		method: "recruitment_system.recruitment_system.doctype.job_applicant.job_applicant.get_default_Company_interview_round",
+		callback: function(r) {
+			var default_round = r.message || null;
+			// Store Job Applicant context so Interview form onload can pre-fill all fields (same as first interview)
+			var interview_data = {
+				job_applicant: frm.doc.name,
+				job_opening: frm.doc.job_title || "",
+				demand: frm.doc.linked_demand || "",
+				interview_round: default_round || "",
+				interview_level: "Company"
+			};
+			try {
+				sessionStorage.setItem("interview_from_job_applicant", JSON.stringify(interview_data));
+			} catch (e) {
+				console.warn("Could not set sessionStorage for interview pre-fill:", e);
+			}
+			frappe.model.with_doctype("Interview", function() {
+				var doc = frappe.model.get_new_doc("Interview");
+				doc.job_applicant = frm.doc.name;
+				doc.interview_level = "Company";
+				if (default_round) {
+					doc.interview_round = default_round;
+				}
+				frappe.set_route("Form", "Interview", doc.name);
+			});
+		}
+	});
+}
+
+/**
+ * Start Visa Process from Job Applicant (when stage is Offer Letter Accepted)
+ */
+function start_visa_process(frm) {
+	frappe.confirm(
+		__("Start Visa Process for this candidate? A Visa Process document will be created."),
+		function() {
+			frm.call({
+				method: "recruitment_system.recruitment_system.doctype.job_applicant.job_applicant.start_visa_process",
+				args: { job_applicant_name: frm.doc.name },
+				freeze: true,
+				freeze_message: __("Creating Visa Process..."),
+				callback: function(r) {
+					if (r.message && r.message.success) {
+						frappe.show_alert({
+							indicator: "green",
+							message: __("Visa Process '{0}' created.", [r.message.visa_process])
+						}, 5);
+						frm.reload_doc();
+						if (r.message.visa_process) {
+							setTimeout(function() {
+								frappe.set_route("Form", "Visa Process", r.message.visa_process);
+							}, 1000);
+						}
+					}
+				}
+			});
+		}
+	);
+}

@@ -41,6 +41,7 @@
   "passport_place_of_issue",
   "passport_status",
   "applicant_documents_tab",
+  "documents_section",
   "applicant_document",
   "applicant_education_tab",
   "table_htod",
@@ -343,17 +344,20 @@
    "fieldtype": "Column Break"
   },
   {
-   "depends_on": "eval:doc.is_missing_documents == 1",
    "fieldname": "missing_documents_name",
    "fieldtype": "Small Text",
-   "label": "Missing Documents Name",
-   "description": "Enter the names of missing documents, separated by commas (e.g., CV, Passport, CNIC)"
+   "label": "Missing Documents Name"
+  },
+  {
+   "fieldname": "documents_section",
+   "fieldtype": "Section Break",
+   "label": "Documents"
   }
  ],
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-26 13:18:05.663440",
+ "modified": "2026-01-28 13:56:53.131766",
  "modified_by": "Administrator",
  "module": "Recruitment System",
  "name": "Applicant",

@@ -45,9 +45,13 @@ app_license = "mit"
 # include js in doctype views
 doctype_js = {
 	"Job Opening": "public/js/job_opening_demand.js",
-	"Job Applicant": "public/js/job_applicant.js"
+	"Job Applicant": "public/js/job_applicant.js",
+	"Interview": "public/js/interview.js"
 }
-# doctype_list_js = {"doctype" : "public/js/doctype_list.js"}
+# List view: bulk action "Create Bulk Interviews" for Job Applicant (same Demand and Demand Position)
+doctype_list_js = {
+	"Job Applicant": "public/js/job_applicant_list.js",
+}
 # doctype_tree_js = {"doctype" : "public/js/doctype_tree.js"}
 # doctype_calendar_js = {"doctype" : "public/js/doctype_calendar.js"}
 
@@ -86,7 +90,8 @@ doctype_js = {
 # ------------
 
 # before_install = "recruitment_system.install.before_install"
-# after_install = "recruitment_system.install.after_install"
+after_install = "recruitment_system.install.after_install"
+after_migrate = "recruitment_system.install.after_migrate"
 
 # Uninstallation
 # ------------
@@ -133,7 +138,9 @@ doctype_js = {
 # Override standard doctype classes
 
 override_doctype_class = {
-	"Job Opening": "recruitment_system.recruitment_system.doctype.job_opening_demand.job_opening.JobOpening"
+	"Job Opening": "recruitment_system.recruitment_system.doctype.job_opening_demand.job_opening.JobOpening",
+	"Job Applicant": "recruitment_system.recruitment_system.doctype.job_applicant.job_applicant.JobApplicant",
+	"Interview": "recruitment_system.recruitment_system.interview.interview.Interview"
 }
 
 # Document Events
@@ -141,14 +148,13 @@ override_doctype_class = {
 # Hook on document methods and events
 # Note: Demand Drive folder management hooks are implemented directly in Demand class
 # (after_insert, on_update, on_trash methods are automatically called by Frappe)
-
-# doc_events = {
-# 	"*": {
-# 		"on_update": "method",
-# 		"on_cancel": "method",
-# 		"on_trash": "method"
-# 	}
-# }
+# Job Applicant -> Visa Process stage sync: when JA is saved with pipeline "Visa Process",
+# keep linked Visa Process's pipeline and current_stage in sync (works with HRMS controller).
+doc_events = {
+	"Job Applicant": {
+		"on_update": "recruitment_system.recruitment_system.doctype.job_applicant.job_applicant.sync_job_applicant_stage_to_visa_process",
+	}
+}
 
 # Scheduled Tasks
 # ---------------

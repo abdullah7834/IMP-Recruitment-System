@@ -45,7 +45,7 @@ Job Applicant (linked to Job Opening)
   - `get_demand_position_details()` - Gets specific position details
   - `get_demand_age_requirements()` - Gets age min/max from Demand
 
-- **Client:** `public/js/job_opening_demand.js`
+- **Company:** `public/js/job_opening_demand.js`
   - Handles `linked_demand` change → populates `demand_position` dropdown
   - Handles `demand_position` change → auto-fills Job Opening fields
 
@@ -75,7 +75,7 @@ Job Applicant (linked to Job Opening)
 - **Server:** `job_applicant_custom_fields/add_custom_fields.py`
   - `get_job_opening_by_demand_position()` - Finds Job Opening by demand + position
 
-- **Client:** `public/js/job_applicant.js`
+- **Company:** `public/js/job_applicant.js`
   - Handles `linked_demand` change → populates `demand_position` dropdown
   - Handles `demand_position` change → finds and populates `job_title` (Job Opening)
 

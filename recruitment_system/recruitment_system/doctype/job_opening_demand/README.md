@@ -9,7 +9,7 @@ This module customizes the Frappe HR "Job Opening" doctype to integrate with the
    - `get_demand_position_details()` - Get specific position details
    - `get_demand_age_requirements()` - Get age requirements from Demand
 
-2. **`job_opening_demand.js`** - Client-side script
+2. **`job_opening_demand.js`** - Company-side script
    - Handles `linked_demand` field change
    - Handles `demand_position` field change
    - Auto-fills Job Opening fields

@@ -8,11 +8,9 @@
  "field_order": [
   "skill_name",
   "skill_level",
-  "certified",
   "column_break_kuit",
   "skill_type",
   "years_of_experience",
-  "certificate_reference",
   "remarks_section",
   "remarks"
  ],
@@ -27,12 +25,6 @@
    "fieldtype": "Select",
    "label": "Skill Level",
    "options": "Basic\nIntermediate\nExpert"
-  },
-  {
-   "default": "0",
-   "fieldname": "certified",
-   "fieldtype": "Check",
-   "label": "Certified"
   },
   {
    "fieldname": "column_break_kuit",
@@ -50,11 +42,6 @@
    "label": "Years of Experience"
   },
   {
-   "fieldname": "certificate_reference",
-   "fieldtype": "Data",
-   "label": "Certificate Reference"
-  },
-  {
    "fieldname": "remarks_section",
    "fieldtype": "Section Break",
    "label": "Remarks"
@@ -69,7 +56,7 @@
  "index_web_pages_for_search": 1,
  "istable": 1,
  "links": [],
- "modified": "2026-01-19 15:54:53.667416",
+ "modified": "2026-01-28 14:04:02.401659",
  "modified_by": "Administrator",
  "module": "Recruitment System",
  "name": "Applicant Skill",

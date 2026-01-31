@@ -1,7 +1,7 @@
 // Copyright (c) 2026, abdullahjavaid198@gmail.com and contributors
 // For license information, please see license.txt
 
-// frappe.ui.form.on("Application", {
+// frappe.ui.form.on("Pipeline Stage", {
 // 	refresh(frm) {
 
 // 	},

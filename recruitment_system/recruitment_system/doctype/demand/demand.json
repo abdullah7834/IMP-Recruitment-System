@@ -18,11 +18,9 @@
   "demand_status",
   "section_break_mjhp",
   "visa_category",
-  "visa_quantity_approved",
   "visa_validity_months",
   "column_break_mbro",
   "visa_type",
-  "embassy",
   "remarks_visa",
   "position_summary_tab",
   "total_positions",
@@ -50,7 +48,6 @@
   "documents_section",
   "demand_letter",
   "poa_issue_date",
-  "attestation_required",
   "attested_copy",
   "column_break_mppt",
   "power_of_attorney_poa",
@@ -148,11 +145,6 @@
    "options": "Work\nEmployment\nOther"
   },
   {
-   "fieldname": "visa_quantity_approved",
-   "fieldtype": "Int",
-   "label": "Visa Quantity Approved"
-  },
-  {
    "fieldname": "visa_validity_months",
    "fieldtype": "Int",
    "label": "Visa Validity Months"
@@ -166,11 +158,6 @@
    "fieldtype": "Select",
    "label": "Visa Type",
    "options": "Skilled\nSemi-Skilled\nLabor"
-  },
-  {
-   "fieldname": "embassy",
-   "fieldtype": "Data",
-   "label": "Embassy"
   },
   {
    "fieldname": "remarks_visa",
@@ -312,12 +299,6 @@
    "label": "POA Issue Date"
   },
   {
-   "default": "0",
-   "fieldname": "attestation_required",
-   "fieldtype": "Check",
-   "label": "Attestation Required"
-  },
-  {
    "fieldname": "attested_copy",
    "fieldtype": "Attach",
    "label": "Attested Copy"
@@ -440,7 +421,7 @@
  "grid_page_length": 50,
  "index_web_pages_for_search": 1,
  "links": [],
- "modified": "2026-01-24 12:56:00.220514",
+ "modified": "2026-01-28 15:18:24.550713",
  "modified_by": "Administrator",
  "module": "Recruitment System",
  "name": "Demand",

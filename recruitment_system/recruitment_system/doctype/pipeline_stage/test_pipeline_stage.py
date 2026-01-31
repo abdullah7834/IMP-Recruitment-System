@@ -5,5 +5,5 @@
 from frappe.tests.utils import FrappeTestCase
 
 
-class TestApplication(FrappeTestCase):
+class TestPipelineStage(FrappeTestCase):
 	pass
